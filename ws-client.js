@@ -1,3 +1,16 @@
+const ws = new WebSocket('ws://localhost:4321');
+
+ws.onopen = () => {
+  setTitle('Connected to the Server');
+};
+
+ws.onclose = () => {
+  setTitle('DISCONNECTED');
+};
+
+ws.onmessage = payload => {
+  printMessage(payload.data);
+};
 
 document.forms[0].onsubmit = function () {
     var input = document.getElementById('message');
